@@ -2,9 +2,9 @@
 
 set -e
 
-DOCKER_TAG=${DOCKER_TAG:-latest}
-DEFAULT_TAG=$(git rev-parse --short HEAD) # Default tag = commit hash
+DOCKER_TAG=${DOCKER_TAG:-`git rev-parse --short HEAD`} # default = commit hash
+DOCKER_TAG_DEFAULT=latest
 
-echo "Build a image - ${IMAGE_REPO}:${DEFAULT_TAG}"
-docker build --pull -t ${IMAGE_REPO}:${DEFAULT_TAG} .
-docker tag ${IMAGE_REPO}:${DEFAULT_TAG} ${IMAGE_REPO}:${DOCKER_TAG}
+echo "Build a image - ${IMAGE_REPO}:${DOCKER_TAG_DEFAULT}"
+docker build --pull -t ${IMAGE_REPO}:${DOCKER_TAG_DEFAULT} .
+docker tag ${IMAGE_REPO}:${DOCKER_TAG_DEFAULT} ${IMAGE_REPO}:${DOCKER_TAG}
