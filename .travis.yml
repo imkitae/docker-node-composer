@@ -1,0 +1,19 @@
+sudo: required
+language: generic
+
+services:
+  - docker
+
+env:
+  - IMAGE_REPO=ktkang/node-composer DOCKER_TAG=${TRAVIS_TAG}
+
+script:
+  - bin/build.sh
+
+deploy:
+  - provider: script
+    skip_cleanup: true
+    script: bin/push.sh
+    on:
+      branch: master
+      tags: true
