@@ -5,6 +5,7 @@ ENV COMPOSER_HOME /root
 ENV COMPOSER_VERSION 1.6.5
 
 RUN apk --no-cache add \
+    git \
     openssh-client \
     php7 \
     php7-curl \
